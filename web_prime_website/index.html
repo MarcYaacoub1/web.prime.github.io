@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101a38">
+<meta name="description" content="web.prime — professional website development agency. Contact us to discuss your next project.">
+<title>web.prime — Websites built to make an impression</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Syne font for modern premium headers & DM Sans for body text -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101a38;--blue:#4779ec;--sky:#8eb8ff;--ink:#12182b;--muted:#667085;--paper:#f7f9ff;--line:#e5eaf5;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}button,a{-webkit-tap-highlight-color:transparent}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+
+/* Typography Enhancements */
+h1, h2, h3, .brand { font-family: "Syne", sans-serif; }
+
+header{position:sticky;top:0;z-index:100;background:rgba(247,249,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(229,234,245,.8)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:800;letter-spacing:-1px}
+.brand span{color:var(--blue)}
+.brand-mark{width:1.25em;height:1.25em;flex:none;display:block;fill:var(--blue)}
+.navlinks{display:flex;gap:30px;align-items:center;color:#46506a;font-size:14px;font-weight:600}
+.navlinks a{transition:color .2s ease}
+.navlinks a:hover{color:var(--blue)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:12px;padding:13px 19px;font-weight:700;font-size:14px;transition:all .25s ease;cursor:pointer}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 9px 22px #4779ec30}
+.btn-primary:hover{transform:translateY(-3px);background:#3568dd;box-shadow:0 14px 28px #4779ec50}
+.btn-light{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn-light:hover{transform:translateY(-2px);border-color:#cad8fb}
+.menu{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:20px}
+
+/* Social Icon Component */
+.social-icon-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);color:var(--navy);transition:all .25s cubic-bezier(0.34, 1.56, 0.64, 1);box-shadow:0 2px 6px rgba(0,0,0,.03)}
+.social-icon-btn svg{width:18px;height:18px;fill:currentColor;transition:transform .2s ease}
+.social-icon-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-3px) scale(1.05);box-shadow:0 10px 22px #4779ec40}
+.social-icon-btn:hover svg{transform:scale(1.15)}
+
+/* Hero Section & Initial Entrance Animations */
+.hero{padding:84px 0 70px;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;right:-180px;top:-130px;background:radial-gradient(circle,#dce8ff 0,rgba(220,232,255,0) 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #d9e4ff;background:#edf3ff;border-radius:99px;padding:7px 12px;color:#315ec2;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.dot{width:7px;height:7px;background:#4e82f5;border-radius:50%;animation:pulse 2s infinite}
+h1,h2,h3,p{margin-top:0}
+h1{font:800 clamp(42px,5.6vw,70px)/1.06 "Syne",sans-serif;letter-spacing:-2.5px;margin:23px 0}
+.gradient{background:linear-gradient(100deg,#315ed1,#75a8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{font-size:17px;color:#65708a;max-width:530px;margin-bottom:27px}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.micro{margin-top:25px;color:#7a8499;font-size:12px}
+.showcase{position:relative;min-height:405px;display:grid;place-items:center;perspective:1000px}
+.orb{position:absolute;width:340px;height:340px;border-radius:50%;background:linear-gradient(135deg,#e3ecff,#f7f9ff);border:1px solid #e2eaff;animation:orbFloat 8s ease-in-out infinite}
+
+/* Interactive Mock Window */
+.mock-window{position:relative;width:min(100%,430px);background:#fff;border:1px solid #e2e8f4;border-radius:22px;box-shadow:0 28px 80px #1c376b20;overflow:hidden;transform-style:preserve-3d;transition:transform 0.15s ease-out;will-change:transform}
+.window-top{height:44px;border-bottom:1px solid #eef1f7;display:flex;align-items:center;gap:6px;padding:0 16px}
+.window-top i{width:7px;height:7px;border-radius:50%;background:#d6ddeb}
+.window-url{margin-left:12px;color:#9ba5b7;font-size:10px}
+.mock-content{padding:25px}
+.mock-badge{font-size:9px;letter-spacing:.12em;color:#4779ec;font-weight:800}
+.mock-title{font:800 29px/1.15 "Syne",sans-serif;letter-spacing:-1px;margin:10px 0}
+.mock-text{font-size:11px;color:#8992a6;max-width:230px}
+.mock-cta{display:inline-block;background:#4779ec;color:white;border-radius:7px;padding:9px 12px;font-size:10px;font-weight:700;margin-top:9px}
+.mock-art{height:120px;border-radius:14px;margin-top:23px;background:linear-gradient(130deg,#152957,#386ee0 58%,#9ec3ff);position:relative;overflow:hidden}
+.mock-art:before,.mock-art:after{content:"";position:absolute;border:1px solid #ffffff60;transform:rotate(35deg);border-radius:20px}
+.mock-art:before{width:170px;height:90px;right:18px;top:18px}
+.mock-art:after{width:90px;height:130px;right:90px;top:-25px}
+
+/* Floating Cards Animation */
+.float-card{position:absolute;background:#fff;border:1px solid #e6ebf6;border-radius:14px;padding:14px 16px;box-shadow:0 15px 40px #1c376b18;font-size:12px;font-weight:700;z-index:2;transition:transform 0.2s ease-out}
+.float-card small{display:block;color:#8a94a9;font-size:10px;font-weight:500}
+.float-one{left:-2px;bottom:44px;animation:floatSlow 5s ease-in-out infinite}
+.float-two{right:-3px;top:48px;animation:floatSlow 6s ease-in-out infinite 1s}
+.float-icon{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:99px;background:#edf3ff;color:#4779ec;margin-right:7px}
+
+/* On-load Entrance Animations */
+.animate-load{opacity:0;transform:translateY(30px);animation:heroEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+.delay-1{animation-delay:0.1s}
+.delay-2{animation-delay:0.25s}
+.delay-3{animation-delay:0.4s}
+.delay-4{animation-delay:0.55s}
+
+@keyframes heroEntrance{to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+@keyframes floatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-15px,15px) scale(1.05)}}
+
+/* Sections & General Scroll Reveal */
+section{padding:80px 0}
+.section-head{text-align:center;max-width:650px;margin:0 auto 42px}
+.kicker{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.section-head h2{font:800 clamp(30px,4vw,43px)/1.15 "Syne",sans-serif;letter-spacing:-1.5px;margin:12px 0}
+.section-head p{color:var(--muted);margin-bottom:0}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{background:#fff;border:1px solid var(--line);border-radius:20px;padding:27px;transition:all .3s cubic-bezier(0.16, 1, 0.3, 1)}
+.service:hover{transform:translateY(-8px);box-shadow:0 22px 45px #1b346b12;border-color:#cad8fb}
+.service-icon{width:48px;height:48px;border-radius:14px;background:#edf3ff;color:#4779ec;display:grid;place-items:center;font-size:22px;margin-bottom:22px;transition:transform .3s ease}
+.service:hover .service-icon{transform:scale(1.1) rotate(5deg)}
+.service h3{font:750 19px "Syne",sans-serif;margin-bottom:9px}
+.service p{color:var(--muted);font-size:14px;margin-bottom:0}
+
+.process{background:var(--navy);color:white;position:relative;overflow:hidden}
+.process:after{content:"";position:absolute;right:-160px;bottom:-250px;width:480px;height:480px;border:1px solid #ffffff17;border-radius:50%;box-shadow:0 0 0 50px #ffffff08,0 0 0 100px #ffffff05}
+.process .section-head p{color:#b4bfd8}
+.process .kicker{color:#9abaff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative;z-index:1}
+.step{border-top:1px solid #ffffff2a;padding-top:20px}
+.step-number{color:#8fb1ff;font-size:12px;font-weight:800;letter-spacing:.12em}
+.step h3{font:700 20px "Syne",sans-serif;margin:12px 0 8px}
+.step p{color:#b4bfd8;font-size:14px;margin:0}
+
+/* About Section */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:center}
+.about-panel{background:linear-gradient(145deg,#172a59,#4779ec);color:#fff;border-radius:24px;padding:34px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.about-panel:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #ffffff45;border-radius:50%;right:-70px;bottom:-100px;box-shadow:0 0 0 25px #ffffff0d,0 0 0 50px #ffffff08}
+.about-panel .big{font:800 42px "Syne",sans-serif;letter-spacing:-2px;position:relative;z-index:1}
+.about-panel p{color:#dbe5ff;font-size:14px;max-width:250px;position:relative;z-index:1}
+.owners{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.owner{border:1px solid var(--line);background:#fff;border-radius:14px;padding:17px;transition:transform .2s ease}
+.owner:hover{transform:translateY(-3px)}
+.owner strong{display:block;font:750 16px "Syne",sans-serif}
+.owner span{font-size:12px;color:#7d879c}
+.about-copy h2{font:800 38px/1.15 "Syne",sans-serif;letter-spacing:-1.5px;margin:12px 0 17px}
+.about-copy p{color:var(--muted)}
+.truth-note{background:#eef3ff;border-left:3px solid var(--blue);padding:13px 15px;border-radius:0 10px 10px 0;color:#445574;font-size:13px;margin-top:20px}
+
+/* Contact Box */
+.contact-box{background:linear-gradient(120deg,#172750,#2c54a8);border-radius:26px;padding:48px;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.contact-box h2{font:800 clamp(30px,4vw,42px)/1.12 "Syne",sans-serif;letter-spacing:-1.5px;margin:10px 0 13px}
+.contact-box p{color:#d0dbf3;margin-bottom:0}
+.contact-items{display:grid;gap:12px}
+.contact-item{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:14px 18px;border-radius:14px;overflow-wrap:anywhere;transition:all .25s ease}
+.contact-item:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);transform:translateX(6px)}
+.contact-icon{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;flex-shrink:0}
+.contact-icon svg{width:18px;height:18px;fill:currentColor}
+.contact-item b{display:block;font-size:11px;color:#a9c4ff;letter-spacing:.08em;text-transform:uppercase}
+.contact-item a,.contact-item span{font-size:14px;font-weight:600;color:#fff}
+.contact-item a:hover{color:#bcd2ff;text-decoration:underline}
+
+footer{padding:28px 0;color:#7b859b;font-size:12px}
+.footer-row{display:flex;justify-content:space-between;gap:18px;align-items:center}
+.socials{display:flex;gap:12px;align-items:center}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(0.16, 1, 0.3, 1),transform .7s cubic-bezier(0.16, 1, 0.3, 1)}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:850px){.navlinks{gap:15px}.hero-grid{grid-template-columns:1fr;gap:20px}.hero{padding-top:60px}.showcase{min-height:360px;max-width:550px;width:100%;margin:auto}.services{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr;gap:28px}.about-panel{min-height:230px}.contact-box{grid-template-columns:1fr;padding:34px}.steps{gap:16px}}
+@media(max-width:620px){.wrap{width:min(100% - 30px,1160px)}.nav{height:68px}.navlinks{display:none;position:absolute;top:67px;left:0;right:0;padding:20px;background:#f7f9ff;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.nav-actions .btn{display:none}.menu{display:block}.brand{font-size:22px}.hero{padding:48px 0 35px}h1{letter-spacing:-1.5px}.hero-copy{font-size:15px}.showcase{min-height:320px}.orb{width:270px;height:270px}.mock-window{width:calc(100% - 28px)}.mock-content{padding:20px}.mock-title{font-size:25px}.float-one{left:0;bottom:20px}.float-two{right:0;top:24px}.float-card{padding:10px 11px}.services,.steps{grid-template-columns:1fr}section{padding:60px 0}.section-head{margin-bottom:30px}.owners{grid-template-columns:1fr}.about-copy h2{font-size:31px}.contact-box{padding:27px 20px}.footer-row{flex-direction:column;align-items:flex-start}.socials{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="web.prime home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 21 3 26.5 16 32l13-5.5z" fill="currentColor" opacity=".8"/><path d="M16 16.5 3 11 16 5.5 29 11z" fill="currentColor"/><path d="M3 16 16 21.5 29 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      web<span>.prime</span>
+    </a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">Our process</a>
+      <a href="#about">About us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="social-icon-btn" href="https://www.tiktok.com/@web.prime0" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 1 0 5.55 6.29V9a8.27 8.27 0 0 0 4.88 1.58V7.13a4.85 4.85 0 0 1-1.11-.44z"/></svg>
+      </a>
+      <a class="social-icon-btn" href="https://www.instagram.com/web.prime0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a class="btn btn-primary" href="#contact">Start a project <span>↗</span></a>
+    </div>
+    <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow animate-load delay-1">
+      <span class="dot"></span> Website Development Agency
+    </div>
+    <h1 class="animate-load delay-2">Your next idea.<br><span class="gradient">Built for the web.</span></h1>
+    <p class="hero-copy animate-load delay-3">We create modern website experiences with thoughtful design, clear structure, and a focus on your goals. Tell us what you want to build and let's talk.</p>
+    <div class="hero-actions animate-load delay-4">
+      <a class="btn btn-primary" href="#contact">Let's talk about your project <span>↗</span></a>
+      <a class="social-icon-btn" href="https://www.tiktok.com/@web.prime0" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 1 0 5.55 6.29V9a8.27 8.27 0 0 0 4.88 1.58V7.13a4.85 4.85 0 0 1-1.11-.44z"/></svg>
+      </a>
+      <a class="social-icon-btn" href="https://www.instagram.com/web.prime0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+    <p class="micro animate-load delay-4">web.prime · Modern Digital Experiences</p>
+  </div>
+  
+  <div class="showcase animate-load delay-2" id="interactiveShowcase" aria-label="Illustration of a website design preview">
+    <div class="orb"></div>
+    <div class="mock-window" id="mockWindow">
+      <div class="window-top"><i></i><i></i><i></i><span class="window-url">yourbrand.website</span></div>
+      <div class="mock-content">
+        <div class="mock-badge">A DIGITAL FIRST IMPRESSION</div>
+        <div class="mock-title">Make your<br>next move count.</div>
+        <div class="mock-text">A clean, considered online experience built around your idea.</div>
+        <span class="mock-cta">Discover more ↗</span>
+        <div class="mock-art"></div>
+      </div>
+    </div>
+    <div class="float-card float-one"><span class="float-icon">✦</span>Made for your goals<small>Every project starts with a conversation</small></div>
+    <div class="float-card float-two"><span class="float-icon">⌘</span>Modern web design<small>Clear. Responsive. Purposeful.</small></div>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap"><div class="section-head reveal"><div class="kicker">What we do</div><h2>Everything starts with a<br>good digital experience.</h2><p>Website services shaped around the needs of your project. Scope and deliverables are agreed with you before work begins.</p></div>
+<div class="services">
+  <article class="service reveal"><div class="service-icon">▧</div><h3>Website design</h3><p>Thoughtful page layouts, visual direction, and user-friendly experiences designed to communicate your brand clearly.</p></article>
+  <article class="service reveal"><div class="service-icon">⌘</div><h3>Website development</h3><p>Responsive websites built with care for different screen sizes, readable content, and smooth navigation.</p></article>
+  <article class="service reveal"><div class="service-icon">↗</div><h3>Landing pages</h3><p>Focused pages for a product, service, campaign, or idea—with a clear message and next step for visitors.</p></article>
+  <article class="service reveal"><div class="service-icon">✳</div><h3>Interactive experiences</h3><p>Useful motion and interactions that add character while keeping the experience easy to understand.</p></article>
+  <article class="service reveal"><div class="service-icon">▤</div><h3>Business websites</h3><p>A professional online home for your business, including the pages and contact details your visitors need.</p></article>
+  <article class="service reveal"><div class="service-icon">◎</div><h3>Website improvements</h3><p>Discuss an existing website with us and we can help define a practical plan for the next iteration.</p></article>
+</div></div></section>
+
+<section class="process" id="process"><div class="wrap"><div class="section-head reveal"><div class="kicker">How we work</div><h2>A clear process. Built around you.</h2><p>We start with your requirements and agree on the right approach together.</p></div>
+<div class="steps"><div class="step reveal"><span class="step-number">01 / DISCOVER</span><h3>Tell us the idea</h3><p>Share your goals, audience, examples you like, and what the website needs to do.</p></div><div class="step reveal"><span class="step-number">02 / PLAN</span><h3>Agree on the scope</h3><p>We discuss the pages, features, style, timeline, and next steps before moving forward.</p></div><div class="step reveal"><span class="step-number">03 / BUILD</span><h3>Bring it to life</h3><p>We work toward the agreed direction and keep communication open as the project progresses.</p></div></div>
+</div></section>
+
+<section id="about"><div class="wrap about-grid">
+  <div class="about-panel reveal">
+    <div>
+      <div class="eyebrow" style="background:#ffffff16;border-color:#ffffff35;color:#dce8ff">Meet the team</div>
+      <div class="big" style="margin-top:24px">web.prime</div>
+    </div>
+    <p>Two owners. One shared focus: making thoughtful websites for ideas worth putting online.</p>
+  </div>
+  <div class="about-copy reveal">
+    <div class="kicker">About web.prime</div>
+    <h2>Small team energy.<br>Big care for the details.</h2>
+    <p>web.prime is a website development agency led by Kevin Nader and Marc Ya3coub. We work directly with clients to understand their needs and shape a web concept around the project.</p>
+    <div class="owners">
+      <div class="owner">
+        <strong>Kevin Nader</strong>
+        <span>Co-Founder & Lead Developer</span>
+      </div>
+      <div class="owner">
+        <strong>Marc Ya3coub</strong>
+        <span>Co-Founder & Agency Lead</span>
+      </div>
+    </div>
+    <div class="truth-note">We focus on high quality, performance, and clear communication on every project. Contact us to discuss your specific requirements.</div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap"><div class="contact-box reveal"><div><div class="kicker" style="color:#a9c4ff">Let's connect</div><h2>Have a website idea?<br>Let's talk.</h2><p>Send us a message with a short description of your project. We'll use it to start the conversation.</p><div style="margin-top:24px"><a class="btn" style="background:#fff;color:#203b7b" href="https://wa.me/+201274604866?text=Hi%20web.prime,%20I'd%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a></div></div>
+<div class="contact-items">
+  <!-- WhatsApp Phone 1 -->
+  <div class="contact-item">
+    <div class="contact-icon" style="background:#25d36630; color:#25d366;"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.198-.198.347-.764.967-.937 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></div>
+    <div><b>WhatsApp (1)</b><a href="https://wa.me/+201274604866?text=Hi%20web.prime,%20I'd%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer">+20 12 74604866 ↗</a></div>
+  </div>
+  <!-- WhatsApp Phone 2 -->
+  <div class="contact-item">
+    <div class="contact-icon" style="background:#25d36630; color:#25d366;"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.198-.198.347-.764.967-.937 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></div>
+    <div><b>WhatsApp (2)</b><a href="https://wa.me/+201553633075?text=Hi%20web.prime,%20I'd%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer">01553633075 ↗</a></div>
+  </div>
+  <!-- Email -->
+  <div class="contact-item">
+    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+    <div><b>Email</b><a href="mailto:web.prime71@gmail.com">web.prime71@gmail.com</a></div>
+  </div>
+  <!-- TikTok -->
+  <div class="contact-item">
+    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 1 0 5.55 6.29V9a8.27 8.27 0 0 0 4.88 1.58V7.13a4.85 4.85 0 0 1-1.11-.44z"/></svg></div>
+    <div><b>TikTok</b><a href="https://www.tiktok.com/@web.prime0" target="_blank" rel="noopener noreferrer">@web.prime0</a></div>
+  </div>
+  <!-- Instagram -->
+  <div class="contact-item">
+    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+    <div><b>Instagram</b><a href="https://www.instagram.com/web.prime0/" target="_blank" rel="noopener noreferrer">@web.prime0</a></div>
+  </div>
+</div>
+</div></div></section>
+</main>
+
+<footer><div class="wrap footer-row">
+  <a class="brand" href="#home" style="font-size:19px">
+    <svg class="brand-mark" style="width:1.2em;height:1.2em;" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 21 3 26.5 16 32l13-5.5z" fill="currentColor" opacity=".8"/><path d="M16 16.5 3 11 16 5.5 29 11z" fill="currentColor"/><path d="M3 16 16 21.5 29 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    web<span>.prime</span>
+  </a>
+  <span>© <span id="year"></span> web.prime. All rights reserved.</span>
+  <div class="socials">
+    <a class="social-icon-btn" href="https://www.tiktok.com/@web.prime0" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 1 0 5.55 6.29V9a8.27 8.27 0 0 0 4.88 1.58V7.13a4.85 4.85 0 0 1-1.11-.44z"/></svg>
+    </a>
+    <a class="social-icon-btn" href="https://www.instagram.com/web.prime0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+  </div>
+</div></footer>
+
+<script>
+// Mobile Navigation Toggle
+const menu=document.getElementById('menu'), links=document.getElementById('navlinks');
+menu.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Scroll Intersection Observer for Sections Reveal
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Interactive 3D Parallax Mouse Movement for Hero Showcase
+const showcase = document.getElementById('interactiveShowcase');
+const mockWindow = document.getElementById('mockWindow');
+
+if(showcase && mockWindow) {
+  showcase.addEventListener('mousemove', (e) => {
+    const rect = showcase.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    
+    mockWindow.style.transform = `rotate(${2}deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+  });
+
+  showcase.addEventListener('mouseleave', () => {
+    mockWindow.style.transform = `rotate(2deg) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+  });
+}
+</script>
+</body>
+</html>
